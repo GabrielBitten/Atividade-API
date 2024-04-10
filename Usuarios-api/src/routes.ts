@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import usuarioController from './usuario/controllers/usuario.controller'
 import TarefaController from './tarefas/controllers/tarefa.controller'
+import CategoriaController from './categorias/controllers/categoria.controller';
 
 const routes = Router()
 //Rotas de Usuario
@@ -28,7 +29,12 @@ routes.get('/tarefas/longa-descricao', TarefaController.findLongaDescricao);
 routes.get('/tarefas/agrupar-por-categoria', TarefaController.agruparPorCategoria);
 routes.get('/tarefas/antiga/usuario/:usuarioId', TarefaController.findMaisAntiga);
 
-
+//rotas de categorias
+routes.post('/categorias', CategoriaController.create);
+routes.get('/categorias/usuario/:usuarioId', CategoriaController.findAll);
+routes.get('/categorias/:id', CategoriaController.findById);
+routes.put('/categorias/:id', CategoriaController.update);
+routes.delete('/categorias/:id', CategoriaController.delete);
 export {
     routes
 }
